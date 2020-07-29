@@ -96,7 +96,6 @@ except ImportError:
 import os
 from pathlib import Path
 import platform
-
 setup(
     name="surfepy",
     version=0.1,
@@ -105,4 +104,4 @@ setup(
     long_description="",
     license="MIT",
     cmake_args=['-DEIGEN3_INCLUDE_DIR=eigen-git-mirror','-DCMAKE_INSTALL_RPATH=$ORIGIN'],
-)
+    cmake_install_dir='.')
