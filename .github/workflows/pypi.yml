@@ -33,8 +33,6 @@ jobs:
     - name: submodules
       run: |
         git submodule update --init --recursive
-    - name: Checkout submodules
-      uses: textbook/git-checkout-submodule-action@master
     - name: Set up Python
       uses: actions/setup-python@v1
       with:
