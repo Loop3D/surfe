@@ -26,7 +26,7 @@ jobs:
         package-path: ''
         pip-wheel-args: '--no-deps'
       
-   osx:
+  osx:
     runs-on: macos-latest
     steps:
     - uses: actions/checkout@v2
