@@ -27,7 +27,7 @@ jobs:
         pip-wheel-args: '--no-deps'
   
   build-windows:
-    runs-on: windows-latest
+    runs-on: windows-2016
     strategy:
       matrix:
         python: ['3.6','3.7','3.8']
