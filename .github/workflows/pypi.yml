@@ -30,6 +30,9 @@ jobs:
     runs-on: macos-latest
     steps:
     - uses: actions/checkout@v2
+    - name: submodules
+      run: |
+        git submodule update --init --recursive
     - name: Checkout submodules
       uses: textbook/git-checkout-submodule-action@master
     - name: Set up Python
@@ -78,5 +81,4 @@ jobs:
       run: |
         python setup.py bdist_wheel
         python setup.py bdist
-    
-        twine upload dist/*
+
