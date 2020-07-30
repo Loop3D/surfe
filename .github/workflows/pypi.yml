@@ -25,7 +25,30 @@ jobs:
         system-packages: ''
         package-path: ''
         pip-wheel-args: '--no-deps'
-  
+      
+   osx:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Checkout submodules
+      uses: textbook/git-checkout-submodule-action@master
+    - name: Set up Python
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.8
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install twine 
+    - name: Build manylinux Python wheels
+      uses: RalfG/python-wheels-manylinux-build@v0.2.2-manylinux2010_x86_64
+      with:
+        python-versions: 'cp36-cp36m cp37-cp37m cp38-cp38'
+        build-requirements: 'cmake scikit-build'
+        system-packages: ''
+        package-path: ''
+        pip-wheel-args: '--no-deps'
+        
   build-windows:
     runs-on: windows-2016
     strategy:
@@ -50,7 +73,7 @@ jobs:
       run: |
         python --version
         pip install cmake scikit-build
-    - name: Building Loop wheel and installing
+    - name: Building surfe wheel
       shell: bash -l {0}
       run: |
         python setup.py bdist_wheel
