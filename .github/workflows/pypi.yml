@@ -67,7 +67,7 @@ jobs:
       run: |
         git submodule update --init --recursive
     - name: Add msbuild to PATH
-      uses: microsoft/setup-msbuild@v1.0.1
+      uses: microsoft/setup-msbuild@v1.0.2
 
 
     - uses: goanpeca/action-setup-conda@v1
