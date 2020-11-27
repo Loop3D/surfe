@@ -21,6 +21,7 @@ jobs:
       matrix:
         python: ['3.6','3.7','3.8']
     steps:
+    - uses: actions/checkout@v2
     - uses: conda-incubator/setup-miniconda@v2
       with:
         python-version: ${{ matrix.python }} 
@@ -30,6 +31,7 @@ jobs:
       run: |
         python --version
         conda install -c conda-forge conda-build
+        cd conda
         conda build -c anaconda -c conda-forge -c loop3d -c conda-forge/label/cf202003  -c pytorch -c fcakyon -c districtdatalabs --output-folder . .
     - name: upload to anaconda
       shell: bash -l {0}
