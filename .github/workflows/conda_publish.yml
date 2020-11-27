@@ -14,4 +14,28 @@ jobs:
         with:
           subdir: "conda"
           anacondatoken: ${{ secrets.CONDA }}
-          platforms: "win osx linux"
+          platforms: "linux"
+  windows:
+    runs-on: windows-2016
+    strategy:
+      matrix:
+        python: ['3.6','3.7','3.8']
+    steps:
+    - uses: conda-incubator/setup-miniconda@v2
+      with:
+        python-version: ${{ matrix.python }} 
+        activate-environment: loop    
+    - name: Installing dependencies
+      shell: bash -l {0}
+      run: |
+        python --version
+        conda install -c conda-forge conda-build
+        conda build -c anaconda -c conda-forge -c loop3d -c conda-forge/label/cf202003  -c pytorch -c fcakyon -c districtdatalabs --output-folder . .
+    - name: upload to anaconda
+      shell: bash -l {0}
+      with:
+        anacondatoken: ${{ secrets.CONDA }}
+      run: |
+        export ANACONDA_API_TOKEN=$INPUT_ANACONDATOKEN
+        anaconda upload --label main win-64/*.tar.bz2
+  
