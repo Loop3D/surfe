@@ -14,4 +14,4 @@ jobs:
         with:
           subdir: "conda"
           anacondatoken: ${{ secrets.CONDA }}
-          platforms: "linux"
+          platforms: "win osx linux"
