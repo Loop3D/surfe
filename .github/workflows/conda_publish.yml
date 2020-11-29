@@ -42,7 +42,6 @@ jobs:
     - name: upload
       shell: powershell
       run: | 
-        export ANACONDA_API_TOKEN=${{ secrets.CONDA }}
-        anaconda upload --label main win-64/*.tar.bz2
+        anaconda upload --label main win-64/*.tar.bz2 -t ${{ secrets.CONDA }}
         
   
