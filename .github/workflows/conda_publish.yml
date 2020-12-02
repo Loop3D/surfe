@@ -42,6 +42,6 @@ jobs:
     - name: upload
       shell: powershell
       run: | 
-        anaconda upload --label main win-64/*.tar.bz2 -t ${{ secrets.CONDA }}
+        C:\ProgramData\Anaconda3\Scripts\anaconda.exe upload --label main win-64/*.tar.bz2 -t ${{ secrets.CONDA }}
         
   
