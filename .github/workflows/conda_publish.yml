@@ -39,11 +39,12 @@ jobs:
         conda install -c conda-forge conda-build
         cd conda
         conda build -c anaconda -c conda-forge -c loop3d -c conda-forge/label/cf202003  -c pytorch -c fcakyon -c districtdatalabs --output-folder . .
+    - name: upload
+      shell: powershell
+      run: | 
         conda install anaconda-client
         anaconda upload --label main win-64/*.tar.bz2 -t ${{ secrets.CONDA }}
-#     - name: upload
-#       shell: powershell
-#       run: | 
+
 #         C:\ProgramData\Anaconda3\Scripts\anaconda.exe upload --label main win-64/*.tar.bz2 -t ${{ secrets.CONDA }}
         
   
