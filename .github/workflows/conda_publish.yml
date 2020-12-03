@@ -33,15 +33,17 @@ jobs:
         python-version: ${{ matrix.python }} 
         activate-environment: loop    
     - name: Conda build
-      shell: bash -l {0}
+      shell: powershell
       run: |
         python --version
         conda install -c conda-forge conda-build
         cd conda
         conda build -c anaconda -c conda-forge -c loop3d -c conda-forge/label/cf202003  -c pytorch -c fcakyon -c districtdatalabs --output-folder . .
-    - name: upload
-      shell: powershell
-      run: | 
-        C:\ProgramData\Anaconda3\Scripts\anaconda.exe upload --label main win-64/*.tar.bz2 -t ${{ secrets.CONDA }}
+        conda install anaconda-client
+        anaconda upload --label main win-64/*.tar.bz2 -t ${{ secrets.CONDA }}
+#     - name: upload
+#       shell: powershell
+#       run: | 
+#         C:\ProgramData\Anaconda3\Scripts\anaconda.exe upload --label main win-64/*.tar.bz2 -t ${{ secrets.CONDA }}
         
   
