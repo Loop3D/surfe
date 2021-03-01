@@ -29,8 +29,8 @@ setup(
     name="surfepy",
     version=0.2,
     author="Michael Hillier",
-    cmdclass=
-        'install_lib':CustomInstallLibCommand
+    cmdclass={
+        'install_lib': CustomInstallLibCommand
     },
     description="python bindings for surfe - geological interpolator using rbf",
     long_description="",
