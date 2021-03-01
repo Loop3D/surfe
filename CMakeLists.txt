@@ -35,12 +35,15 @@ target_link_libraries(surfe_lib math_lib)
 
 add_subdirectory(pybind11)
 #setup python
-pybind11_add_module(surfepy surfe_pybindings/pybindings.cpp)
-target_link_libraries(surfepy surfe_lib math_lib)
+pybind11_add_module(_surfepy surfepy/pybindings.cpp)
+target_link_libraries(_surfepy surfe_lib math_lib)
 # not sure if this is the right way of setting the install destination. 
 # also this is forcing the install destination for python setup... so perhaps we need multiple options
 
-install(TARGETS surfepy surfe_lib math_lib DESTINATION ${CMAKE_INSTALL_PREFIX})
+
+install(TARGETS _surfepy surfe_lib math_lib DESTINATION ${CMAKE_INSTALL_PREFIX})
+install(TARGETS _surfepy DESTINATION ${CMAKE_INSTALL_PREFIX})
+
 option(GEO_BUILDER FALSE)
 if (GEO_BUILDER)
 	find_package(VTK REQUIRED)

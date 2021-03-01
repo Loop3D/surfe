@@ -15,7 +15,7 @@
 // ----------------
 
 namespace py = pybind11;
-PYBIND11_MODULE(surfepy, m) {
+PYBIND11_MODULE(_surfepy, m) {
 	// setup bindings for Surfe_API
 	py::class_<Surfe_API>(m, "Surfe_API")
 		.def(py::init<const int>())

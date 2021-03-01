@@ -13,3 +13,5 @@ CMakeCache.txt
 _skbuild
 dist
 *.egg*
+surfepy/__pycache__/__init__.cpython-38.pyc
+surfepy-0.1-cp38-cp38-linux_x86_64.whl
