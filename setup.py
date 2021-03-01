@@ -20,8 +20,11 @@ class CustomInstallLibCommand(install_lib):
     def run(self):
         install_lib.run(self)
         if os.path.isdir(self.build_dir):
-            shutil.copyfile(self.build_dir+'/surfepy/libmath_lib.so',self.install_dir+'../../libmath_lib.so')
-            shutil.copyfile(self.build_dir+'/surfepy/libsurfe_lib.so',self.install_dir+'../../libsurfe_lib.so')
+            ext = 'so'
+            if sys.platform == 'win32':
+                ext = 'dll' 
+            shutil.copyfile(join(self.build_dir,Path('/surfepy/libmath_lib.{}'.format(ext)),self.install_dir+'../../libmath_lib.{}'.format(ext))
+            shutil.copyfile(self.build_dir+'/surfepy/libsurfe_lib.{}'.format(ext),self.install_dir+'../../libsurfe_lib.{}'.format(ext))
 
     
 
