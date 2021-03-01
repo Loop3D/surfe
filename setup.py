@@ -15,16 +15,19 @@ import os
 from pathlib import Path
 import platform
 import shutil
+from os.path import join
 
 class CustomInstallLibCommand(install_lib):
     def run(self):
         install_lib.run(self)
         if os.path.isdir(self.build_dir):
-            ext = 'so'
+            files = ['libmath_lib.so','libsurfe_lib.so']
             if sys.platform == 'win32':
-                ext = 'dll' 
-            shutil.copyfile(join(self.build_dir,Path('/surfepy/libmath_lib.{}'.format(ext)),self.install_dir+'../../libmath_lib.{}'.format(ext))
-            shutil.copyfile(self.build_dir+'/surfepy/libsurfe_lib.{}'.format(ext),self.install_dir+'../../libsurfe_lib.{}'.format(ext))
+                files = ['math_lib.dll','surfe_lib.dll']
+            for f in files:
+                shutil.copyfile(join(self.build_dir,Path('surfepy/{}'.format(f))),\
+                join(self.install_dir,Path('../../{}'.format(f))))
+
 
     
 
