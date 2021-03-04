@@ -24,7 +24,7 @@ jobs:
         build-requirements: 'cmake scikit-build'
         system-packages: ''
         package-path: ''
-        pip-wheel-args: '--no-deps'
+        pip-wheel-args: ''
     - name: Publish wheels to PyPI
       env:
         TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
