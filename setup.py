@@ -16,25 +16,12 @@ from pathlib import Path
 import platform
 import shutil
 
-class CustomInstallLibCommand(install_lib):
-    def run(self):
-        install_lib.run(self)
-        if os.path.isdir(self.build_dir):
-            ext = 'so'
-            if sys.platform == 'win32':
-                ext = 'dll' 
-            shutil.copyfile(join(self.build_dir,Path('/surfepy/libmath_lib.{}'.format(ext)),self.install_dir+'../../libmath_lib.{}'.format(ext))
-            shutil.copyfile(self.build_dir+'/surfepy/libsurfe_lib.{}'.format(ext),self.install_dir+'../../libsurfe_lib.{}'.format(ext))
-
-    
+   
 
 setup(
     name="surfepy",
     version=0.2,
     author="Michael Hillier",
-    cmdclass=
-        'install_lib':CustomInstallLibCommand
-    },
     description="python bindings for surfe - geological interpolator using rbf",
     long_description="",
     license="MIT",
