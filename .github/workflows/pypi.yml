@@ -91,5 +91,5 @@ jobs:
       shell: bash -l {0}
       run : |
         pip install twine
-        twine upload dist/*
+        twine upload dist/*.whl
 
