@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Publish Loop Conda
-        uses: Loop3D/conda-publish-action@1.6
+        uses: Loop3D/conda-publish-action@1.9
         with:
           subdir: "conda"
           anacondatoken: ${{ secrets.CONDA }}
@@ -36,7 +36,7 @@ jobs:
       shell: powershell
       run: |
         python --version
-        conda install -c conda-forge conda-build
+        conda install -c conda-forge conda-build scikit-build numpy
         cd conda
         conda build -c anaconda -c conda-forge -c loop3d -c conda-forge/label/cf202003  -c pytorch -c fcakyon -c districtdatalabs --output-folder . .
     - name: upload
