@@ -21,7 +21,7 @@ from os.path import join
 
 setup(
     name="surfepy",
-    version=0.3,
+    version=0.31,
     author="Michael Hillier",
     description="python bindings for surfe - geological interpolator using rbf",
     long_description="",
