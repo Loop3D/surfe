@@ -39,7 +39,8 @@ setup(
     description="python bindings for surfe - geological interpolator using rbf",
     long_description="",
     license="MIT",
-    cmake_args=['-DEIGEN3_INCLUDE_DIR=eigen-git-mirror'],
+    cmake_args=['-DEIGEN3_INCLUDE_DIR=eigen-git-mirror',
+               '-DCMAKE_INSTALL_RPATH="$ORIGIN/../lib:$ORIGIN/../..",],
     packages=['surfepy'],
     cmake_install_dir="surfepy"
     # extra_objects=['']
