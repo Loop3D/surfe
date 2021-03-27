@@ -1,7 +1,6 @@
 {% set name = "surfe" %}
 {% set version = load_setup_py_data().version %}
 
-
 package:
   name: "{{ name|lower }}"
   version: "{{ version }}"
@@ -12,7 +11,7 @@ source:
 
 build:
   number: 0
-  script: "{{ PYTHON }} -m pip install ."
+  script: "{{ PYTHON }} setup.py install --single-version-externally-managed --record=record.txt"
 
 requirements:
   build:
