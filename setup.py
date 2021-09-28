@@ -33,7 +33,7 @@ class CustomInstallLibCommand(install_lib):
 
 setup(
     name="surfepy",
-    version=0.2,
+    version=0.51,
     author="Michael Hillier",
     cmdclass={
         'install_lib': CustomInstallLibCommand
