@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.1.3](https://www.github.com/Loop3D/surfe/compare/v0.1.2...v0.1.3) (2021-09-28)
+
+
+### Bug Fixes
+
+* path is a string not a list for environ ([19f3e08](https://www.github.com/Loop3D/surfe/commit/19f3e08b9330f6a416e77e8928348cb781f1a572))
+
 ### [0.1.2](https://www.github.com/Loop3D/surfe/compare/v0.1.1...v0.1.2) (2021-09-28)
 
 
