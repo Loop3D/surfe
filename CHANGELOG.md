@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.1.4](https://www.github.com/Loop3D/surfe/compare/v0.1.3...v0.1.4) (2021-09-28)
+
+
+### Bug Fixes
+
+* more library path testing ([da33443](https://www.github.com/Loop3D/surfe/commit/da33443cb68a68ad29793dc28799624bfdb9aa9a))
+
 ### [0.1.3](https://www.github.com/Loop3D/surfe/compare/v0.1.2...v0.1.3) (2021-09-28)
 
 
