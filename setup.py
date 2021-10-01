@@ -18,7 +18,7 @@ from skbuild.command.install_lib import install_lib
 class CustomInstallLibCommand(install_lib):
     def run(self,*args,**kwargs):
         super().run()
-        if sys.platform=='Linux':
+        if sys.platform=='linux':
 
             if os.path.isdir(self.install_dir):
 
