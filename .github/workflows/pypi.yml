@@ -1,8 +1,9 @@
 name: Python package build and publish
 
 on:
-  release:
-    types: [created, edited]
+  push
+#   release:
+#     types: [created, edited]
 
 jobs:
   build_wheels_macos:
@@ -21,8 +22,8 @@ jobs:
           CIBW_ARCHS_MACOS: x86_64 universal2
           CIBW_BUILD: "cp36-* cp37-* cp38-* cp39-*"
           CIBW_BEFORE_BUILD: "pip install numpy==1.18 cython scikit-build pybind11" 
-          CIBW_TEST_REQUIRES: pytest
-          CIBW_TEST_COMMAND: pytest test
+#           CIBW_TEST_REQUIRES: pytest
+#           CIBW_TEST_COMMAND: pytest test
       - name: Publish wheels to PyPI
         env:
           TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
