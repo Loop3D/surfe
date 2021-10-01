@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Checkout submodules
-        uses: textbook/git-checkout-submodule-action@master
+        run: git submodule update --init --recursive
       - name: Build wheels
         uses: joerick/cibuildwheel@v1.10.0
         env:
