@@ -20,8 +20,8 @@ class CustomInstallLibCommand(install_lib):
         super().run()
         if os.path.isdir(self.install_dir):
             
-            shutil.copyfile(self.install_dir+'/surfepy/libmath_lib.so','/tmp/libmath_lib.so')
-            shutil.copyfile(self.install_dir+'/surfepy/libsurfe_lib.so','/tmp/libsurfe_lib.so')
+            shutil.copyfile(self.install_dir+'/surfepy/libmath_lib.so','/usr/lib/libmath_lib.so')
+            shutil.copyfile(self.install_dir+'/surfepy/libsurfe_lib.so','/usr/lib/libsurfe_lib.so')
             
             # shutil.copyfile(join(self.build_dir,Path('/surfepy/libmath_lib.{}'.format(ext)),self.install_dir+'../../libmath_lib.{}'.format(ext))
             # shutil.copyfile(self.build_dir+'/surfepy/libsurfe_lib.{}'.format(ext),self.install_dir+'../../libsurfe_lib.{}'.format(ext))     
