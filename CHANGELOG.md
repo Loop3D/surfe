@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.1.5](https://www.github.com/Loop3D/surfe/compare/v0.1.4...v0.1.5) (2021-10-01)
+
+
+### Bug Fixes
+
+* trying to make import work for ci ([716f20d](https://www.github.com/Loop3D/surfe/commit/716f20dca24262d1f56445676fed5e76c75cedcd))
+
 ### [0.1.4](https://www.github.com/Loop3D/surfe/compare/v0.1.3...v0.1.4) (2021-09-28)
 
 
