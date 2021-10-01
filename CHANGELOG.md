@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.1.6](https://www.github.com/Loop3D/surfe/compare/v0.1.5...v0.1.6) (2021-10-01)
+
+
+### Bug Fixes
+
+* ci might work ([83a414f](https://www.github.com/Loop3D/surfe/commit/83a414f74a386582e4a6a03d6b9fc5550cf837c1))
+
 ### [0.1.5](https://www.github.com/Loop3D/surfe/compare/v0.1.4...v0.1.5) (2021-10-01)
 
 
