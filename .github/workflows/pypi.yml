@@ -25,7 +25,7 @@ jobs:
           CIBW_ARCHS_MACOS: x86_64 universal2
           CIBW_BUILD: " cp38-* cp39-* cp310-* cp311-* cp312-* cp313-*"
           CIBW_SKIP: "*-win32 *-manylinux_i686" #no 32bit
-          CIBW_BEFORE_BUILD: "sh scripts/prepare_build.sh"
+          CIBW_BEFORE_BUILD: "apt-get update && apt-get install -y pybind11-dev python3-dev libeigen3-dev"
 
       - uses: actions/upload-artifact@v4
         with:
