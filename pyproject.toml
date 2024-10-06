@@ -30,11 +30,6 @@ classifiers = [
 wheel.expand-macos-universal-tags = true
 
 
-[tool.cibuildwheel]
-build-frontend = "build[uv]"
-test-command = "pytest {project}/tests"
-test-extras = ["test"]
-
 [tool.cibuildwheel.pyodide]
 environment.CFLAGS = "-fexceptions"
 environment.LDFLAGS = "-fexceptions"
