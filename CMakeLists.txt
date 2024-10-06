@@ -18,6 +18,9 @@ set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 find_package(Eigen3 REQUIRED)
 include_directories(${EIGEN3_INCLUDE_DIR})
 #include_directories(${PROJECT_SOURCE_DIR}/eigen-git-mirror/Eigen)#add_subdirectory(eigen-git-mirror)
+set(CMAKE_INSTALL_RPATH "$ORIGIN")
+# Setup RPATH for finding shared libraries at runtime
+set(CMAKE_INSTALL_RPATH "$ORIGIN")
 
 # Setup math_lib
 FILE(GLOB MATH_LIB_HEADERS "math_lib/*.h")
@@ -26,7 +29,7 @@ FILE(GLOB MATH_LIB_SOURCES "math_lib/*.cpp")
 add_library(math_lib SHARED ${MATH_LIB_HEADERS} ${MATH_LIB_SOURCES})
 target_include_directories(math_lib PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/math_lib)
 
-#Setup surfe_lib
+# Setup surfe_lib
 FILE(GLOB SURFE_LIB_HEADERS "surfe_lib/*.h")
 FILE(GLOB SURFE_LIB_SOURCES "surfe_lib/*.cpp")
 
@@ -34,21 +37,13 @@ add_library(surfe_lib SHARED ${SURFE_LIB_HEADERS} ${SURFE_LIB_SOURCES})
 target_include_directories(surfe_lib PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/surfe_lib
                                             ${CMAKE_CURRENT_SOURCE_DIR}/math_lib)
 target_link_libraries(surfe_lib math_lib)
-message(${CMAKE_CURRENT_SOURCE_DIR})
-#setup python
-# python_add_library(_surfpy surfepy/pybindings.cpp WITH_SOABI)
-# target_link_libraries(_surfepy PRIVATE pybind11::headers)
 
+# Setup Python bindings
 pybind11_add_module(_surfepy surfepy/pybindings.cpp)
 target_link_libraries(_surfepy PRIVATE surfe_lib math_lib)
 
-# target_link_libraries(_surfepy surfe_lib math_lib)
-# not sure if this is the right way of setting the install destination. 
-# also this is forcing the install destination for python setup... so perhaps we need multiple options
-
-
-install(TARGETS _surfepy surfe_lib math_lib DESTINATION ${CMAKE_INSTALL_PREFIX})
-install(TARGETS _surfepy DESTINATION ${CMAKE_INSTALL_PREFIX})
+# Install targets
+install(TARGETS _surfepy surfe_lib math_lib DESTINATION ${CMAKE_INSTALL_PREFIX}/surfepy)
 
 
 
