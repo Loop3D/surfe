@@ -82,4 +82,4 @@ before-all = "yum install eigen3-devel python3-devel -y"
 before-all = "brew install eigen"
 archs = ["x86_64", "arm64"]
 [tool.cibuildwheel.windows]
-before-all = ["choco install eigen", "choco install python3 --version 3.9.7"]
+before-all = ["choco install eigen"]
