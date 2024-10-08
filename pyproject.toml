@@ -9,7 +9,7 @@ authors = [
     { name = "Lachlan Grose", email = "lachlan.grose@monash.edu" },
 ]
 name = "surfepy"
-version = "0.6.0"
+version = "0.5.2"
 description = "python bindings for surfe - geological interpolator using rbf"
 readme = "README.md"
 requires-python = ">=3.7"
