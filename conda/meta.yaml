@@ -1,5 +1,5 @@
 {% set name = "surfe" %}
-{% set version = load_setup_py_data().version %}
+{% set version = '0.6.0' %}
 
 package:
   name: "{{ name|lower }}"
@@ -11,22 +11,24 @@ source:
 
 build:
   number: 0
-  script: "{{ PYTHON }} setup.py install --single-version-externally-managed --record=record.txt"
+  script: "{{ PYTHON }} -m pip install ."
 
 requirements:
   build:
     - {{ compiler('c') }}
-    - scikit-build
+    - scikit-build-core
     - git
+    - pybind11
+    - pip
   host:
     - pip
     - python
-    - cython
-    - setuptools
-    - scikit-build
     - numpy
+    - python >=3.8
+    - scikit-build-core
   run:
     - numpy
+    - python >=3.8
 
 
 about:
