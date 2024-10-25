@@ -13,7 +13,7 @@ jobs:
         os: ${{ fromJSON(vars.BUILD_OS)}}
         python-version: ${{ fromJSON(vars.PYTHON_VERSIONS)}}
     steps:
-      - uses: conda-incubator/setup-miniconda@v2
+      - uses: conda-incubator/setup-miniconda@v3
         with:
           auto-update-conda: true
           python-version: ${{ matrix.python-version }}
