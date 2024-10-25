@@ -30,3 +30,19 @@ jobs:
         with:
           skip_existing: true
           verbose: true
+    sdist:
+      name: Build SDIST
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v4
+        - uses: actions/setup-python@v2
+          with:
+            python-version: 3.11
+        - name: Install dependencies
+          run: python -m pip install build
+        - name: Build SDIST
+          run: python -m build --sdist
+        - uses: pypa/gh-action-pypi-publish@release/v1
+          with:
+            skip_existing: true
+            verbose: true
