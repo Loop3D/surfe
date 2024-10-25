@@ -1,7 +1,7 @@
 name: publish_conda
 
 on:
-  push:
+  workflow_dispatch:
 
 jobs:
   conda-deploy:
@@ -24,10 +24,7 @@ jobs:
         run: |
           git submodule update --init --recursive
 
-      - name: Add msbuild to PATH
-        if: matrix.os == 'windows-latest'
-        uses: microsoft/setup-msbuild@v1.0.2
-      - name: Conda build'
+      - name: Conda build
         env:
           ANACONDA_API_TOKEN: ${{ secrets.ANACONDA_TOKEN  }}
         shell: bash -l {0}

@@ -11,11 +11,10 @@ source:
 
 build:
   number: 0
-  script: "{{ PYTHON }} -m pip install ."
+  script: "{{ PYTHON }} -m pip install . -vv"
 
 requirements:
   build:
-    - {{ compiler('cxx') }}
     - scikit-build-core
     - git
     - pybind11

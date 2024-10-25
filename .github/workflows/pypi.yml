@@ -1,7 +1,7 @@
 name: Build
 
-on: [push, pull_request]
-
+on:
+  workflow_dispatch:
 jobs:
   build_wheels:
     name: Build wheels on ${{ matrix.os }}
@@ -26,3 +26,7 @@ jobs:
         with:
           name: cibw-wheels-${{ matrix.os }}-${{ strategy.job-index }}
           path: ./wheelhouse/*.whl
+      - uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          skip_existing: true
+          verbose: true
