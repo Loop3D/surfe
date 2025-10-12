@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.0](https://www.github.com/Loop3D/surfe/compare/v0.1.6...v0.2.0) (2024-10-25)
+
+
+### Features
+
+* bump version ([9d73afe](https://www.github.com/Loop3D/surfe/commit/9d73afe77f7d36ec004e8921e6a51a96036d4f45))
+
 ### [0.1.6](https://www.github.com/Loop3D/surfe/compare/v0.1.5...v0.1.6) (2021-10-01)
 
 
