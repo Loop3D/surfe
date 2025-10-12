@@ -1,48 +1,68 @@
-name: Build
+name: Deploy to PYPI
 
 on:
   workflow_dispatch:
 jobs:
-  build_wheels:
-    name: Build wheels on ${{ matrix.os }}
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: ${{ fromJSON(vars.BUILD_OS)}}
-
+  
+  sdist:
+    name: Build sdist
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      # Used to host cibuildwheel
       - uses: actions/setup-python@v5
-
-      - name: Install cibuildwheel
-        run: python -m pip install cibuildwheel==2.21.2
-
-      - name: Build wheels
-        run: python -m cibuildwheel --output-dir wheelhouse
-
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install build
+      - name: Build sdist
+        run: python -m build --sdist
       - uses: actions/upload-artifact@v4
         with:
-          name: cibw-wheels-${{ matrix.os }}-${{ strategy.job-index }}
-          path: ./wheelhouse/*.whl
+          name: dist
+          path: ./dist/*.tar.gz
+  wheels:
+    name: Build wheels
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, macos-14,windows-latest]
+    env:
+      MACOSX_DEPLOYMENT_TARGET: '15.0' 
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install cibuildwheel
+      - name: Build wheels
+        run: |
+          cibuildwheel --output-dir dist
+      - uses: actions/upload-artifact@v4
+        with:
+            name: wheels-${{ matrix.os }}
+            path: ./dist/*
+  publish:
+    name: Publish wheels and sdist to PyPI
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+    needs: [wheels,sdist]
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+
+      - name: Move all distributions to `dist/`
+        run: |
+          mkdir -p dist
+          find artifacts -name '*.whl' -exec cp {} dist/ \;
+          find artifacts -name '*.tar.gz' -exec cp {} dist/ \;
       - uses: pypa/gh-action-pypi-publish@release/v1
         with:
-          skip_existing: true
+          skip-existing: true
           verbose: true
-    sdist:
-      name: Build SDIST
-      runs-on: ubuntu-latest
-      steps:
-        - uses: actions/checkout@v4
-        - uses: actions/setup-python@v2
-          with:
-            python-version: 3.11
-        - name: Install dependencies
-          run: python -m pip install build
-        - name: Build SDIST
-          run: python -m build --sdist
-        - uses: pypa/gh-action-pypi-publish@release/v1
-          with:
-            skip_existing: true
-            verbose: true
+          packages-dir: dist/
+
+
