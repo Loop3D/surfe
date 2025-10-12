@@ -1,19 +1,20 @@
-cmake_minimum_required(VERSION 3.15...3.27)
+cmake_minimum_required(VERSION 3.5)
 
 project(surfe)
 
 # Get Eigen dependency
 set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 include(FetchContent)
+find_package(Eigen3 REQUIRED)
 
-FetchContent_Declare(
-  Eigen
-  GIT_REPOSITORY https://github.com/eigenteam/eigen-git-mirror
-  GIT_TAG 3.3.7
-  GIT_SHALLOW TRUE
-  GIT_PROGRESS TRUE
-)
-FetchContent_MakeAvailable(Eigen)
+# FetchContent_Declare(
+#   Eigen
+#   GIT_REPOSITORY https://github.com/eigenteam/eigen-git-mirror
+#   GIT_TAG 3.4.1
+#   GIT_SHALLOW TRUE
+#   GIT_PROGRESS TRUE
+# )
+# FetchContent_MakeAvailable(Eigen)
 
 # Set C++ standard
 set(CMAKE_CXX_STANDARD 11)
